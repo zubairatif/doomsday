@@ -32,3 +32,17 @@ h1,
 h2 {
   font-family: "Poppins";
 }
+button {
+  font: inherit;
+  all: unset;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  color: black;
+  opacity: 0.85;
+}
+a:hover {
+  text-decoration: 3px solid underline;
+  opacity: 1;
+}

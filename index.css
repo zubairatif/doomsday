@@ -11,21 +11,41 @@ body {
 }
 ul {
   list-style: none;
+}
+.top_bar ul {
   display: flex;
   gap: 1rem;
 }
-a {
-  text-decoration: none;
-  color: black;
-  opacity: 0.85;
-}
-a:hover {
-  text-decoration: 3px solid underline;
-  opacity: 1;
-}
+
 header {
-  background: #ffffff;
+  background: white;
   padding-block: 0.75rem;
   display: grid;
   place-items: center;
+}
+.above_main {
+  max-width: 960px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+main {
+  background-color: #d9d9d9;
+  max-width: 960px;
+  margin-inline: auto;
+  padding: 0.5rem 1.5rem;
+}
+.main_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+footer {
+  background-color: var(--primary-dark);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 0.85rem;
+  padding-block: 1em;
 }

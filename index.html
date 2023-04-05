@@ -23,5 +23,47 @@
     <header>
       <h1>Calculate the Week-Day using Domsday Rule</h1>
     </header>
+    <div class="above_main">
+      <div class="stats">
+        <p class="score_count">Score: 3<span class="score_value"></span></p>
+        <p class="average_count">Avg: 10s<span class="average_value"></span></p>
+      </div>
+      <button class="get_hint">Get Hint</button>
+    </div>
+    <main>
+      <div class="main_top">
+        <div class="stopwatch"><p class="stopwatch_value">15s</p></div>
+        <div class="date">
+          <p class="date_value">28-09-1978</p>
+          <p class="date_format">dd - mm - yyyy</p>
+        </div>
+        <button class="settings_button">
+          <img src="settings.svg" alt="settings icon" />
+        </button>
+      </div>
+      <div class="main_hint hide">
+        <ul class="hint_list">
+          <li>Anchor Day for 1900 is <span class="hint_one_value">3</span></li>
+          <li>Anchor Day for 1978 is <span class="hint_two_value">2</span></li>
+          <li>Closest Doomsday is <span class="hint_three_value">5th</span></li>
+        </ul>
+      </div>
+      <div class="main_settings hide">
+        <p>These are the settings you can change</p>
+      </div>
+      <div class="options">
+        <button class="day" id="sun" data-value="0">0-Sunday</button
+        ><button class="day" id="mon" data-value="1">1-Monday</button
+        ><button class="day correct" id="tue" data-value="2">2-Tuesday</button
+        ><button class="day" id="wed" data-value="3">3-Wednesday</button
+        ><button class="day" id="thu" data-value="4">4-Thursday</button
+        ><button class="day" id="fri" data-value="5">5-Friday</button
+        ><button class="day" id="sat" data-value="6">6-Saturday</button>
+      </div>
+      <button class="continue"></button>
+    </main>
+    <footer>
+      <p>Zubair Atif - 2023</p>
+    </footer>
   </body>
 </html>
