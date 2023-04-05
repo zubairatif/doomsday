@@ -1,7 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Poppins:wght@600&display=swap");
 :root {
-  --primary-colour: #009e82;
-  --secondary-colour: #f0932a;
+  --primary: #009e82;
+  --primary-dark: #00261f;
+  --secondary: #f0932a;
+  --accent-one: #b0b4ff;
+  --accent-two: #dfb7ff;
+  --correct: #a9ff1c;
+  --incorrect: #ff1c1c;
+  --light: #f7e9ff;
+  --dark: #333333;
 }
 * {
   box-sizing: border-box;
@@ -12,12 +19,16 @@ html,
 body {
   height: 100%;
 }
+::selection {
+  background-color: var(--secondary);
+}
+::-moz-selection {
+  background-color: var(--secondary);
+}
 body {
   font-family: "Inter";
-  background: var(--primary-colour);
 }
 h1,
 h2 {
   font-family: "Poppins";
-  margin-block-end: 1em;
 }

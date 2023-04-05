@@ -1,0 +1,31 @@
+body {
+  background-color: var(--primary);
+}
+
+.top_bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 20%;
+  padding-block: 0.65rem;
+}
+ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+a {
+  text-decoration: none;
+  color: black;
+  opacity: 0.85;
+}
+a:hover {
+  text-decoration: 3px solid underline;
+  opacity: 1;
+}
+header {
+  background: #ffffff;
+  padding-block: 0.75rem;
+  display: grid;
+  place-items: center;
+}
