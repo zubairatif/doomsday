@@ -6,12 +6,12 @@
     <title>Practice: Doomsday Rule</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="index.css" />
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
   </head>
   <body>
     <div class="top_bar center">
       <img src="logo.svg" alt="Week-Day Logo" srcset="" />
-      <ul class="top_links">
+      <ul>
         <li><a href="learn.html">Learn</a></li>
         <li>
           <a href="https://github.com/zubairatif/doomsday" target="_blank"
@@ -26,16 +26,17 @@
     <div class="container">
       <div class="above_main center">
         <div class="stats">
-          <p>Score: 3<span class="score_value"></span></p>
-          <p>Avg: 10s<span class="average_value"></span></p>
+          <p>Score: <span class="score_value">0</span></p>
+          <p>Streak: <span class="streak_value">0</span></p>
+          <p>Avg:<span class="average_value">??</span></p>
         </div>
-        <button class="get_hint">Get Hint</button>
+        <button class="hint_button">Get Hint</button>
       </div>
       <main>
         <div class="main_top center">
-          <div class="stopwatch"><p class="stopwatch_value">15s</p></div>
+          <div class="stopwatch"><p class="stopwatch_value">??s</p></div>
           <div class="date center">
-            <p class="date_value">28-09-1978</p>
+            <p class="date_value"></p>
             <p class="date_format">dd - mm - yyyy</p>
           </div>
           <button class="settings_button">
@@ -59,15 +60,23 @@
           <p>These are the settings you can change</p>
         </div>
         <div class="options">
-          <button class="day" id="sun" data-value="0">0-Sunday</button
-          ><button class="day" id="mon" data-value="1">1-Monday</button
-          ><button class="day correct" id="tue" data-value="2">2-Tuesday</button
-          ><button class="day" id="wed" data-value="3">3-Wednesday</button
-          ><button class="day" id="thu" data-value="4">4-Thursday</button
-          ><button class="day" id="fri" data-value="5">5-Friday</button
-          ><button class="day" id="sat" data-value="6">6-Saturday</button>
+          <button class="day" data-value="0">0-Sunday</button
+          ><button class="day" data-value="1">1-Monday</button
+          ><button class="day" id="tue" data-value="2">2-Tuesday</button
+          ><button class="day" data-value="3">3-Wednesday</button
+          ><button class="day" data-value="4">4-Thursday</button
+          ><button class="day" data-value="5">5-Friday</button
+          ><button class="day" data-value="6">6-Saturday</button>
         </div>
-        <button class="continue"></button>
+        <div class="main_bottom">
+          <div class="solution">
+            <button class="solution_button">Show Solution</button>
+            <span class="solution_display hidden"></span>
+          </div>
+          <button class="continue center">
+            <img src="continue.svg" alt="continue" /> Continue
+          </button>
+        </div>
       </main>
     </div>
     <footer class="center">

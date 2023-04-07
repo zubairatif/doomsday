@@ -11,24 +11,26 @@ body {
 .top_bar ul {
   display: flex;
   gap: 1rem;
-  color: white;
 }
-
+.top_bar ul a {
+  color: white;
+  font-weight: 500;
+}
 header {
   background: white;
-  padding-block: 0.75rem;
+  padding-block: 1em;
 }
 .above_main {
-  max-width: 960px;
+  max-width: var(--max-width);
   margin-inline: auto;
   justify-content: space-between;
 }
 main {
+  margin-block-start: 2rem;
   background-color: #d9d9d9;
-  max-width: 960px;
+  max-width: var(--max-width);
   margin-inline: auto;
-  padding: 0.5rem 1.5rem;
-  height: 500px;
+  padding: 1.5rem;
   display: grid;
   grid-template-rows: repeat(4, auto);
 }
@@ -44,14 +46,20 @@ main {
 .stats p:not(:last-child) {
   margin-block-end: 0.25em;
 }
-.get_hint {
+.hint_button {
   background: linear-gradient(90deg, #b0b4ff 2.71%, #dfb7ff 100%);
   border-radius: 25px;
   font-size: 1.5rem;
   padding: 0.35em 1.25em;
 }
+.hint_button:hover {
+  background: linear-gradient(90deg, #bec1fc 2.71%, #e3c5fb 100%);
+  border: 1px solid var(--primary-dark);
+}
 .main_top {
   justify-content: space-between;
+  margin-inline: auto;
+  width: 90%;
 }
 .stopwatch {
   font-size: 1.5rem;
@@ -64,13 +72,15 @@ main {
 }
 .date_value {
   font-family: "Poppins", sans-serif;
-  font-size: 1.75rem;
+  font-size: 2.25rem;
+  user-select: none;
+  -moz-user-select: none;
 }
 .date_format {
   font-size: 1rem;
 }
 .options {
-  grid-row-start: -1;
+  grid-row-start: -2;
   display: grid;
   grid-template-columns: repeat(3, auto);
   place-content: center;
@@ -80,11 +90,45 @@ main {
   grid-column-start: 2;
 }
 .day {
-  padding: 0.5em 1.15em;
+  padding: 0.65em 1.15em;
   border-radius: 5px;
   background: #f7e9ff;
   font-family: "Inter";
   font-weight: 500;
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   text-align: center;
+}
+button.correct {
+  background-color: var(--correct);
+}
+button.incorrect {
+  background-color: var(--incorrect);
+  color: white;
+}
+.main_bottom {
+  justify-self: center;
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  padding-inline: 2rem;
+}
+.continue {
+  background: var(--primary-dark);
+  color: white;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  gap: 0.65rem;
+  font-size: 1.25rem;
+}
+.continue:hover {
+  translate: 0.3em;
+}
+.solution_button {
+  font-size: 1.25rem;
+  padding: 0.5em 1em;
+  border: 2px solid var(--primary-dark);
+  border-radius: 5px;
+}
+.solution_button:hover {
+  background: white;
 }

@@ -9,6 +9,7 @@
   --incorrect: #ff1c1c;
   --light: #f7e9ff;
   --dark: #333333;
+  --max-width: 960px;
 }
 * {
   box-sizing: border-box;
@@ -48,6 +49,14 @@ button {
   font: inherit;
   all: unset;
   cursor: pointer;
+  transition: translate 0.3s ease-out;
+}
+button:hover {
+  translate: 0.1em 0.1em;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 2px dashed var(--primary-dark);
 }
 a {
   text-decoration: none;
@@ -70,6 +79,9 @@ footer {
   padding-block: 1em;
   margin-block-start: 1.1rem;
 }
+img {
+  user-select: none;
+}
 .center {
   display: flex;
   align-items: center;
@@ -80,4 +92,5 @@ footer {
 }
 .hidden {
   visibility: hidden;
+  margin-block: 20px;
 }
