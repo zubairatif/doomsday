@@ -38,17 +38,12 @@ const GetValues = () => {
 };
 let Values = GetValues();
 
-continueBtn.addEventListener("click", () => {
-  console.log("Next");
-  Values = GetValues();
-  dayButtons.forEach((btn) => {
-    btn.classList.remove("correct");
-    btn.classList.remove("incorrect");
-  });
-});
+continueBtn.addEventListener("click", next);
 
 dayButtons.forEach((btn) => {
-  btn.addEventListener("click", handleChoice);
+  btn.addEventListener("click", (e) => {
+    handleChoice(e.target.dataset.value);
+  });
 });
 hintButton.addEventListener("click", giveHint);
 solutionButton.addEventListener("click", () => {
@@ -56,14 +51,15 @@ solutionButton.addEventListener("click", () => {
   solutionDisplay.style.marginInlineStart = "1rem";
   solutionDisplay.classList.toggle("hidden");
 });
-function handleChoice(e) {
+function handleChoice(answer) {
   tries += 1;
-  if (e.target.dataset.value == Values.weekday) {
-    e.target.classList.add("correct");
+  e = document.querySelector(`[data-value="${answer}"]`);
+  if (answer == Values.weekday) {
+    e.classList.add("correct");
     score += 1;
     streak += 1;
   } else {
-    e.target.classList.add("incorrect");
+    e.classList.add("incorrect");
     streak = 0;
   }
   if (tries > 1) {
@@ -71,9 +67,21 @@ function handleChoice(e) {
   }
   scoreDisplay.innerText = score;
   streakDisplay.innerText = streak;
+  if (answer == Values.weekday) next();
+}
+function next() {
+  console.log("Next");
+  Values = GetValues();
+  dayButtons.forEach((btn) => {
+    btn.classList.remove("correct");
+    btn.classList.remove("incorrect");
+  });
 }
 function giveHint() {
   let date = Values.randomDate;
   let [day, month, year] = date.split("-");
   let century = Math.ceil(year / 100);
 }
+document.addEventListener("keydown", (event) => {
+  if (event.key in ["0", "1", "2", "3", "4", "5", "6"]) handleChoice(event.key);
+});

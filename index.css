@@ -98,9 +98,6 @@ main {
   font-size: 1.25rem;
   text-align: center;
 }
-button.correct {
-  background-color: var(--correct);
-}
 button.incorrect {
   background-color: var(--incorrect);
   color: white;
