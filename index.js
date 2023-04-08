@@ -48,7 +48,6 @@ dayButtons.forEach((btn) => {
 hintButton.addEventListener("click", giveHint);
 solutionButton.addEventListener("click", () => {
   solutionDisplay.innerHTML = Values.weekday;
-  solutionDisplay.style.marginInlineStart = "1rem";
   solutionDisplay.classList.toggle("hidden");
 });
 function handleChoice(answer) {
@@ -67,10 +66,12 @@ function handleChoice(answer) {
   }
   scoreDisplay.innerText = score;
   streakDisplay.innerText = streak;
-  if (answer == Values.weekday) next();
+  if (answer == Values.weekday) {
+    next();
+    tries = 0;
+  }
 }
 function next() {
-  console.log("Next");
   Values = GetValues();
   dayButtons.forEach((btn) => {
     btn.classList.remove("correct");
@@ -81,6 +82,7 @@ function giveHint() {
   let date = Values.randomDate;
   let [day, month, year] = date.split("-");
   let century = Math.ceil(year / 100);
+  // let hintOne=
 }
 document.addEventListener("keydown", (event) => {
   if (event.key in ["0", "1", "2", "3", "4", "5", "6"]) handleChoice(event.key);

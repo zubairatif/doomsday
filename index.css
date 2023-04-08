@@ -18,7 +18,7 @@ body {
 }
 header {
   background: white;
-  padding-block: 1em;
+  padding: 0.5em;
 }
 .above_main {
   max-width: var(--max-width);
@@ -28,7 +28,7 @@ header {
 main {
   margin-block-start: 2rem;
   background-color: #d9d9d9;
-  max-width: var(--max-width);
+  width: var(--max-width);
   margin-inline: auto;
   padding: 1.5rem;
   display: grid;
@@ -36,6 +36,7 @@ main {
 }
 .above_main {
   margin-block-end: 0.8rem;
+  width: var(--max-width);
 }
 
 .stats {
@@ -109,23 +110,70 @@ button.incorrect {
   justify-content: space-between;
   padding-inline: 2rem;
 }
+.solution,
+.continue {
+  font-size: 1.25rem;
+}
 .continue {
   background: var(--primary-dark);
   color: white;
   padding: 0.5em 1em;
   border-radius: 5px;
   gap: 0.65rem;
-  font-size: 1.25rem;
 }
 .continue:hover {
   translate: 0.3em;
 }
 .solution_button {
-  font-size: 1.25rem;
-  padding: 0.5em 1em;
+  padding: 0.25em 1em;
   border: 2px solid var(--primary-dark);
   border-radius: 5px;
 }
 .solution_button:hover {
   background: white;
+}
+.solutionDisplay {
+  display: inline-block;
+  margin-inline-start: 1rem;
+}
+.continue > img {
+  width: 1em;
+}
+@media screen and (max-width: 500px) {
+  .options {
+    grid-template-columns: repeat(2, auto);
+    gap: 1.5rem;
+    width: min-content;
+    margin-inline: auto;
+  }
+  .day:nth-child(7) {
+    grid-column-start: 1;
+  }
+  .main_bottom {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 600px) {
+  .continue,
+  .solution {
+    font-size: 1rem;
+    margin-top: 1rem;
+    width: min-content;
+    white-space: nowrap;
+  }
+  .main_top {
+    width: 100%;
+  }
+
+  .date_value {
+    font-size: 1.6rem;
+  }
+  .stopwatch {
+    font-size: 1.25rem;
+    padding: 0.75em;
+  }
+  .settings_button > img {
+    width: 48px;
+  }
 }
