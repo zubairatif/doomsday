@@ -139,6 +139,13 @@ button.incorrect {
 .continue > img {
   width: 1em;
 }
+.main_hint {
+  margin-block: 2rem;
+}
+.hint_values {
+  color: var(--primary);
+  font-weight: 500;
+}
 @media screen and (max-width: 500px) {
   .options {
     grid-template-columns: repeat(2, auto);

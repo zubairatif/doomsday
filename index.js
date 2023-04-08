@@ -13,6 +13,12 @@ const solutionButton = document.querySelector(".solution_button");
 const hintButton = document.querySelector(".hint_button");
 const hintDisplay = document.querySelector(".main_hint");
 const solutionDisplay = document.querySelector(".solution_display");
+const hintOneDisplay = document.querySelector(".hint_one_value");
+const hintTwoDisplay = document.querySelector(".hint_two_value");
+const hintThreeDisplay = document.querySelector(".hint_three_value");
+const hintCenturyDisplay = document.querySelector(".hint_century");
+const hintYearDisplay = document.querySelector(".hint_year");
+
 const GetValues = () => {
   let randomDate = getRandomDate(1800, 2100);
   let weekday = getWeekday(randomDate);
@@ -72,6 +78,7 @@ function handleChoice(answer) {
   }
 }
 function next() {
+  hintDisplay.classList.toggle("hidden");
   Values = GetValues();
   dayButtons.forEach((btn) => {
     btn.classList.remove("correct");
@@ -81,8 +88,46 @@ function next() {
 function giveHint() {
   let date = Values.randomDate;
   let [day, month, year] = date.split("-");
-  let century = Math.ceil(year / 100);
-  // let hintOne=
+  let century = Math.floor(year / 100);
+  hintCenturyDisplay.innerText = century * 100;
+  hintYearDisplay.innerText = year;
+  let closestDoomsday = "not working yet";
+  let yearLastTwo = year - century * 100;
+  let centuryAnchor;
+  switch (century) {
+    case 18: {
+      centuryAnchor = 5;
+      console.log("18th");
+      break;
+    }
+    case 19: {
+      console.log("19th");
+      centuryAnchor = 3;
+      break;
+    }
+    case 20: {
+      console.log("20th");
+      centuryAnchor = 2;
+      break;
+    }
+    default:
+      console.log(0);
+      break;
+  }
+  hintOneDisplay.innerText = `T = ${century} => ${centuryAnchor}`;
+
+  let addOne = yearLastTwo % 2 == 0 ? "" : "+ 11";
+  yearLastTwo = yearLastTwo % 2 == 0 ? yearLastTwo : yearLastTwo + 11;
+  let yearHalf = yearLastTwo / 2;
+  let addTwo = yearHalf % 2 == 0 ? "" : "+ 11";
+  let yearHalfAfter = yearHalf % 2 == 0 ? yearHalf : yearHalf + 11;
+  hintTwoDisplay.innerText = `${year} ${addOne} / 2 => ${yearHalf} ${addTwo} => ${yearHalfAfter} % 7 => ${
+    yearHalfAfter % 7
+  } => 7 - ${yearHalfAfter % 7} => ${
+    7 - (yearHalfAfter % 7)
+  } + ${centuryAnchor} => T = ${centuryAnchor + (7 - (yearHalfAfter % 7))}`;
+  hintThreeDisplay.innerText = closestDoomsday;
+  hintDisplay.classList.toggle("hidden");
 }
 document.addEventListener("keydown", (event) => {
   if (event.key in ["0", "1", "2", "3", "4", "5", "6"]) handleChoice(event.key);
