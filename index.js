@@ -1,5 +1,6 @@
 let score = 0;
 let streak = 0;
+let totalTime = 0;
 let avgTime = 0;
 let tries = 0;
 let avgTries = 0;
@@ -9,6 +10,7 @@ const continueBtn = document.querySelector(".continue");
 const avgTimeDisplay = document.querySelector(".average_value");
 const scoreDisplay = document.querySelector(".score_value");
 const streakDisplay = document.querySelector(".streak_value");
+const averageDisplay = document.querySelector(".average_value");
 const solutionButton = document.querySelector(".solution_button");
 const hintButton = document.querySelector(".hint_button");
 const hintDisplay = document.querySelector(".main_hint");
@@ -18,6 +20,7 @@ const hintTwoDisplay = document.querySelector(".hint_two_value");
 const hintThreeDisplay = document.querySelector(".hint_three_value");
 const hintCenturyDisplay = document.querySelector(".hint_century");
 const hintYearDisplay = document.querySelector(".hint_year");
+const stopwatchDisplay = document.querySelector(".stopwatch_value");
 const doomsdaysMap = new Map([
   ["January", 3],
   ["February", 28],
@@ -75,8 +78,10 @@ solutionButton.addEventListener("click", () => {
 function handleChoice(answer) {
   tries += 1;
   e = document.querySelector(`[data-value="${answer}"]`);
-  if (answer == Values.weekday) {
-    e.classList.add("correct");
+  if (
+    answer == Values.weekday &&
+    solutionDisplay.classList.contains("hidden")
+  ) {
     score += 1;
     streak += 1;
   } else {
@@ -88,19 +93,21 @@ function handleChoice(answer) {
   }
   scoreDisplay.innerText = score;
   streakDisplay.innerText = streak;
+
   if (answer == Values.weekday) {
     next();
     tries = 0;
   }
 }
 function next() {
-  hintDisplay.classList.toggle("hidden");
+  stopTimer();
+  hintDisplay.classList.add("hidden");
   Values = GetValues();
-  solutionDisplay.classList.toggle("hidden");
+  solutionDisplay.classList.add("hidden");
   dayButtons.forEach((btn) => {
-    btn.classList.remove("correct");
     btn.classList.remove("incorrect");
   });
+  startTimer();
 }
 function giveHint() {
   let date = Values.randomDate;
@@ -152,8 +159,7 @@ function giveHint() {
     parseInt(day, 10) -
     closestDoomsday +
     (centuryAnchor + (7 - (yearHalfAfter % 7)));
-  console.log("Final: ", final);
-  final = final < 0 ? final * -1 : final;
+  final = final < 0 ? 7 - final : final;
   hintThreeDisplay.innerText = `${closestDoomsday} => ${day} - ${closestDoomsday} = ${
     day - closestDoomsday
   } + T = ${final} % 7 => ${final % 7}`;
@@ -162,3 +168,29 @@ function giveHint() {
 document.addEventListener("keydown", (event) => {
   if (event.key in ["0", "1", "2", "3", "4", "5", "6"]) handleChoice(event.key);
 });
+
+let startTime;
+let elapsedTime = 0;
+let timer;
+
+function startTimer() {
+  startTime = new Date().getTime();
+  timer = setInterval(updateTimer, 1000);
+}
+
+function stopTimer() {
+  clearInterval(timer);
+  let endTime = new Date().getTime();
+  elapsedTime = parseInt((endTime - startTime) / 1000, 10);
+  totalTime += elapsedTime;
+  stopwatchDisplay.innerHTML = 00 + "s";
+  avgTime = score == 0 ? totalTime : Math.floor(totalTime / score);
+  averageDisplay.innerText = `${avgTime}s`;
+}
+
+function updateTimer() {
+  let currentTime = new Date().getTime();
+  elapsedTime = parseInt((currentTime - startTime) / 1000, 10);
+  stopwatchDisplay.innerHTML = elapsedTime + "s";
+}
+startTimer();
