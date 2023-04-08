@@ -18,7 +18,23 @@ const hintTwoDisplay = document.querySelector(".hint_two_value");
 const hintThreeDisplay = document.querySelector(".hint_three_value");
 const hintCenturyDisplay = document.querySelector(".hint_century");
 const hintYearDisplay = document.querySelector(".hint_year");
-
+const doomsdaysMap = new Map([
+  ["January", 3],
+  ["February", 28],
+  ["March", 14],
+  ["April", 4],
+  ["May", 9],
+  ["June", 6],
+  ["July", 11],
+  ["August", 8],
+  ["September", 5],
+  ["October", 10],
+  ["November", 7],
+  ["December", 12],
+]);
+const isLeap = (year) => {
+  return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0);
+};
 const GetValues = () => {
   let randomDate = getRandomDate(1800, 2100);
   let weekday = getWeekday(randomDate);
@@ -80,6 +96,7 @@ function handleChoice(answer) {
 function next() {
   hintDisplay.classList.toggle("hidden");
   Values = GetValues();
+  solutionDisplay.classList.toggle("hidden");
   dayButtons.forEach((btn) => {
     btn.classList.remove("correct");
     btn.classList.remove("incorrect");
@@ -91,22 +108,27 @@ function giveHint() {
   let century = Math.floor(year / 100);
   hintCenturyDisplay.innerText = century * 100;
   hintYearDisplay.innerText = year;
-  let closestDoomsday = "not working yet";
+  if (isLeap(year)) {
+    doomsdaysMap.set("January", 4).set("February", 29);
+  }
+  let date2 = new Date();
+  date2.setMonth(month - 1);
+  let monthName = date2.toLocaleString("default", { month: "long" });
+  console.log("monthName", monthName);
+  let closestDoomsday = doomsdaysMap.get(monthName);
+  console.log(closestDoomsday);
   let yearLastTwo = year - century * 100;
   let centuryAnchor;
   switch (century) {
     case 18: {
       centuryAnchor = 5;
-      console.log("18th");
       break;
     }
     case 19: {
-      console.log("19th");
       centuryAnchor = 3;
       break;
     }
     case 20: {
-      console.log("20th");
       centuryAnchor = 2;
       break;
     }
@@ -126,7 +148,15 @@ function giveHint() {
   } => 7 - ${yearHalfAfter % 7} => ${
     7 - (yearHalfAfter % 7)
   } + ${centuryAnchor} => T = ${centuryAnchor + (7 - (yearHalfAfter % 7))}`;
-  hintThreeDisplay.innerText = closestDoomsday;
+  let final =
+    parseInt(day, 10) -
+    closestDoomsday +
+    (centuryAnchor + (7 - (yearHalfAfter % 7)));
+  console.log("Final: ", final);
+  final = final < 0 ? final * -1 : final;
+  hintThreeDisplay.innerText = `${closestDoomsday} => ${day} - ${closestDoomsday} = ${
+    day - closestDoomsday
+  } + T = ${final} % 7 => ${final % 7}`;
   hintDisplay.classList.toggle("hidden");
 }
 document.addEventListener("keydown", (event) => {
