@@ -184,7 +184,7 @@ function stopTimer() {
   elapsedTime = parseInt((endTime - startTime) / 1000, 10);
   totalTime += elapsedTime;
   stopwatchDisplay.innerHTML = 00 + "s";
-  avgTime = score == 0 ? totalTime : Math.floor(totalTime / score);
+  avgTime = score == 0 ? elapsedTime : Math.floor(totalTime / score);
   averageDisplay.innerText = `${avgTime}s`;
 }
 
