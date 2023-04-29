@@ -1,3 +1,9 @@
+import "./assets/style.css";
+import "./assets/index.css";
+import "./assets/settings.svg";
+import "./assets/continue.svg";
+import "./assets/logo.svg";
+
 let score = 0;
 let streak = 0;
 let totalTime = 0;
@@ -183,7 +189,7 @@ function stopTimer() {
   let endTime = new Date().getTime();
   elapsedTime = parseInt((endTime - startTime) / 1000, 10);
   totalTime += elapsedTime;
-  stopwatchDisplay.innerHTML = 00 + "s";
+  stopwatchDisplay.innerHTML = "00s";
   avgTime = score == 0 ? elapsedTime : Math.floor(totalTime / score);
   averageDisplay.innerText = `${avgTime}s`;
 }

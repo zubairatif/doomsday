@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="index.js"></script>
+  </head>
+  <body>
+    <div class="top_bar center">
+      <img src="logo.svg" alt="Week-Day Logo" srcset="" />
+      <ul>
+        <li><a href="learn.html">Learn</a></li>
+        <li>
+          <a href="https://github.com/zubairatif/doomsday" target="_blank"
+            >Github</a
+          >
+        </li>
+      </ul>
+    </div>
+    <header class="center">
+      <h1>Calculate the Week-Day using Domsday Rule</h1>
+    </header>
+    <div class="container">
+      <div class="above_main center">
+        <div class="stats">
+          <p>Score: <span class="score_value">0</span></p>
+          <p>Streak: <span class="streak_value">0</span></p>
+          <p>Avg:<span class="average_value">??</span></p>
+        </div>
+        <button class="hint_button">Get Hint</button>
+      </div>
+      <main>
+        <div class="main_top center">
+          <div class="stopwatch"><p class="stopwatch_value">??s</p></div>
+          <div class="date center">
+            <p class="date_value"></p>
+            <p class="date_format">dd - mm - yyyy</p>
+          </div>
+          <button class="settings_button">
+            <img src="settings.svg" alt="settings icon" />
+          </button>
+        </div>
+        <div class="main_hint hidden">
+          <ul class="hint_list">
+            <li>
+              Anchor Day for <span class="hint_century"></span>:
+              <span class="hint_values hint_one_value"></span>
+            </li>
+            <li>
+              Anchor Day for <span class="hint_year"></span>:
+              <span class="hint_values hint_two_value"></span>
+            </li>
+            <li>
+              Closest Doomsday:
+              <span class="hint_values hint_three_value"></span>
+            </li>
+          </ul>
+        </div>
+        <div class="main_settings hidden">
+          <p>These are the settings you can change</p>
+        </div>
+        <div class="options">
+          <button class="day" data-value="0">0-Sun</button
+          ><button class="day" data-value="1">1-Mon</button
+          ><button class="day" data-value="2">2-Tue</button
+          ><button class="day" data-value="3">3-Wed</button
+          ><button class="day" data-value="4">4-Thu</button
+          ><button class="day" data-value="5">5-Fri</button
+          ><button class="day" data-value="6">6-Sat</button>
+        </div>
+        <div class="main_bottom">
+          <div class="solution">
+            <button class="solution_button">Show Solution</button>
+            <span class="solution_display hidden">0</span>
+          </div>
+          <button class="continue center">
+            <img src="continue.svg" alt="continue" /> Continue
+          </button>
+        </div>
+      </main>
+    </div>
+    <footer class="center">
+      <p>Zubair Atif - 2023</p>
+    </footer>
+  </body>
+</html>
