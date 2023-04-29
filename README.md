@@ -1,5 +1,6 @@
 # Practice your Week-Day guessing skills
 
+[View Site](https://guesstheday.netlify.app/)
 A JS app to learn and practice the doomsday algorithm for calculating the weekday of a given arbitrary date.
 
 ## Practice
@@ -11,10 +12,12 @@ This timed mode lets you guess the weekday and get hints.
 This can help you learn the basics of determing the week-day step-by-step using the anchor-day
 
 ## Features
+
 - Get hints
 - Time your guesses
 
 ## Todo
+
 - Everything
 
 ## Build Process
