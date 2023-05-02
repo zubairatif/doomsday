@@ -83,7 +83,7 @@ solutionButton.addEventListener("click", () => {
 });
 function handleChoice(answer) {
   tries += 1;
-  e = document.querySelector(`[data-value="${answer}"]`);
+  let button = document.querySelector(`[data-value="${answer}"]`);
   if (
     answer == Values.weekday &&
     solutionDisplay.classList.contains("hidden")
@@ -91,7 +91,7 @@ function handleChoice(answer) {
     score += 1;
     streak += 1;
   } else {
-    e.classList.add("incorrect");
+    button.classList.add("incorrect");
     streak = 0;
   }
   if (tries > 1) {
